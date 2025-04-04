@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-8c04^+p%v(6)1%m_%tk1*2%)8bk6z65mu=j7=_$(^q%+fz29dq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Add your production domain here
+ALLOWED_HOSTS = ['todo-backend-i7yq.onrender.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -46,12 +47,13 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-     'corsheaders.middleware.CorsMiddleware', 
+    'corsheaders.middleware.CorsMiddleware', 
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 # Allow frontend requests from any origin (Modify for production)
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -77,7 +79,6 @@ WSGI_APPLICATION = 'todo_api.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
 
 # Default database settings
 DATABASES = {
