@@ -94,12 +94,13 @@ WSGI_APPLICATION = 'todo_api.wsgi.application'
 
 # Default database settings
 DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///' + str(BASE_DIR / "db.sqlite3"),
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
+DATABASES['default'] = dj_database_url.parse("postgresql://todo_db_xe3y_user:3mqziW0oSo7lDbquUiNsZH0z3I2OkMID@dpg-cvtn09a4d50c73ak9s0g-a.oregon-postgres.render.com/todo_db_xe3y")
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
