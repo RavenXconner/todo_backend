@@ -22,13 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8c04^+p%v(6)1%m_%tk1*2%)8bk6z65mu=j7=_$(^q%+fz29dq'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 # Add your production domain here
-ALLOWED_HOSTS = ['todo-backend-i7yq.onrender.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost',).split(',')
 
 
 # Application definition
@@ -99,6 +99,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 DATABASES['default'] = dj_database_url.parse("postgresql://todo_db_xe3y_user:3mqziW0oSo7lDbquUiNsZH0z3I2OkMID@dpg-cvtn09a4d50c73ak9s0g-a.oregon-postgres.render.com/todo_db_xe3y")
 # Password validation
